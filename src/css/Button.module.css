@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+.button {
+  background-color: #012367;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0a1659;
+  text-decoration: underline;
+}
+.button:active {
+  transform: translateY(2px);
+}

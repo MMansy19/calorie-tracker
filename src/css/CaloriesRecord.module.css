@@ -1,0 +1,49 @@
+.record {
+  border-radius: 8px;
+  list-style: none;
+  display: flex;
+  color: #eee; /* Adjust text color for dark mode */
+  font-size: 16px;
+  justify-content: space-between;
+  padding: 15px;
+  height: auto;
+  align-items: center;
+  background-color: #222; /* Adjust background color for dark mode */
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Adjust shadow for dark mode */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.record-date {
+  font-weight: bold;
+}
+
+.record-content {
+  color: #fff;
+  font-style: italic;
+  text-transform: capitalize;
+}
+.record-calories {
+  @media screen and (min-width: 768px) {
+    background-color: #333;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.record-calories img {
+  width: 20px;
+  height: 20px;
+}
+
+.record:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Adjust shadow for dark mode */
+}
+
+.record:hover .record-calories {
+  border-color: #eee; /* Adjust border color for calories section on hover in dark mode */
+}

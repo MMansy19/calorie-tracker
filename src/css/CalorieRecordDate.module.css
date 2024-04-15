@@ -1,0 +1,28 @@
+.record-date {
+  background-color: white;
+  border: 3px solid #012367;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 20px;
+  margin: 4px 0;
+}
+
+.record-date-month {
+  color: darkred;
+  font-weight: bold;
+  font-size: 0.5rem;
+}
+
+.record-date-day {
+  color: black;
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+
+.record-date-year {
+  color: #666;
+  font-size: 0.4rem;
+}

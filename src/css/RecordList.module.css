@@ -1,0 +1,13 @@
+.noRecords {
+  color: #666;
+  font-style: italic;
+  margin: 20px 0;
+}
+.placeholder {
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  line-height: 100px;
+  margin: 20px 0;
+  font-size: 20px;
+}
