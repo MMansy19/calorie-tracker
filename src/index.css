@@ -17,7 +17,7 @@ body {
   place-items: center;
   min-width: 320px;
   margin: 2rem 0;
-  min-height: 50vh;
+  min-height: 80vh;
   background-color: #121212;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.87);

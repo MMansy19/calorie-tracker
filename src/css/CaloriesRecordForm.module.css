@@ -3,9 +3,12 @@
   background-color: #333; /* Adjust background color for dark mode */
   padding: 20px;
   border-radius: 10px;
-  max-width: 400px;
   margin: 0 auto;
   position: relative;
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
 }
 
 .form label {

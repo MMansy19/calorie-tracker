@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import RecordList from "./RecordList";
-import styles from "../css/ListingSection.module.css";
+import ListingDate from "./ListingDate.jsx";
 import { getTodayDate } from "../utils";
 
 function ListingRecord({ allRecords }) {
@@ -14,18 +14,10 @@ function ListingRecord({ allRecords }) {
 
   return (
     <>
-      <div className={styles["listing-picker"]}>
-        <label htmlFor="date" className={styles["listing-picker-label"]}>
-          Select date:
-        </label>
-        <input
-          type="date"
-          id="listingDate"
-          className={styles["listing-picker-input"]}
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-        />
-      </div>
+      <ListingDate
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
       <RecordList records={filteredRecords} />
     </>
   );

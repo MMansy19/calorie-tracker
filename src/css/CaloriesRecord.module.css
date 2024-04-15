@@ -1,9 +1,9 @@
 .record {
   border-radius: 8px;
   list-style: none;
-  display: flex;
   color: #eee; /* Adjust text color for dark mode */
   font-size: 16px;
+  display: flex;
   justify-content: space-between;
   padding: 15px;
   height: auto;

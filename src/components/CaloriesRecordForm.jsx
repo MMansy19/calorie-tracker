@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // CaloriesRecordForm.js
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../css/CaloriesRecordForm.module.css";
 import button from "../css/Button.module.css";
 import { getTodayDate } from "../utils";
@@ -12,7 +12,16 @@ const DEFAULT_VALUE = {
 };
 
 function CaloriesRecordForm(props) {
+  const [isFormValid, setIsFormValid] = useState(false);
   const [mealRecord, setMealRecord] = useState(DEFAULT_VALUE);
+
+  useEffect(() => {
+    const validateForm = () => {
+      return mealRecord.content && mealRecord.calories;
+    };
+
+    setIsFormValid(validateForm());
+  }, [mealRecord.content, mealRecord.calories]);
 
   const handleAddRecord = (e) => {
     e.preventDefault();
@@ -68,7 +77,7 @@ function CaloriesRecordForm(props) {
       <input
         type="number"
         id="calories"
-        required
+        min={0}
         value={mealRecord.calories}
         onChange={(e) =>
           setMealRecord({ ...mealRecord, calories: e.target.value })
@@ -76,7 +85,7 @@ function CaloriesRecordForm(props) {
       />
 
       <div className={button.footer}>
-        <button className={button.button} type="submit">
+        <button disabled={!isFormValid} className={button.button} type="submit">
           Add Record
         </button>
         <button

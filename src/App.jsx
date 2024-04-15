@@ -1,36 +1,61 @@
 // App.js
-import button from "./css/Button.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListingRecord from "./components/ListingRecord";
+import Title from "./components/Title";
+import Footer from "./components/Footer.jsx";
 import CaloriesRecordForm from "./components/CaloriesRecordForm";
 import { getTodayDate } from "./utils";
+
 const INITIAL_RECORDS = [
   {
     id: 1,
     date: new Date(getTodayDate()),
-    meal: "Breakfast",
-    content: "Bread",
-    calories: 200,
+    meal: "breakfast",
+    content: "Cereal with milk",
+    calories: 135,
   },
   {
     id: 2,
     date: new Date(getTodayDate()),
-    meal: "Launch",
-    content: "Rise & Meat",
-    calories: 500,
+    meal: "lunch",
+    content: "Sandwich",
+    calories: 250,
   },
   {
     id: 3,
     date: new Date(getTodayDate()),
     meal: "dinner",
-    content: "Chocolate",
-    calories: 200,
+    content: "Pasta",
+    calories: 500,
   },
 ];
+const LOCAL_STORAGE_KEY = "caloriesRecord";
+
 function App() {
-  const [showForm, setShowForm] = useState(false);
-  const [allRecords, setAllRecords] = useState(INITIAL_RECORDS);
+  // const [allRecords, setAllRecords] = useState(INITIAL_RECORDS);
+  const [allRecords, setAllRecords] = useState([]);
   const [nextId, setNextId] = useState(4);
+  const [showForm, setShowForm] = useState(false);
+
+  const saveRecords = () => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(allRecords));
+  };
+  const loadRecords = () => {
+    const storageRecords = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storageRecords != null && storageRecords != "undefined") {
+      setAllRecords(storageRecords);
+    } else {
+      setAllRecords([]);
+    }
+  };
+
+  useEffect(() => {
+    if (!allRecords) {
+      loadRecords();
+    } else {
+      saveRecords();
+    }
+  }, [allRecords]);
 
   const handleToggleForm = () => {
     setShowForm(!showForm);
@@ -44,23 +69,19 @@ function App() {
 
   return (
     <>
-      <h1>
-        Welcome to Calories Record{" "}
-        <img src="src\assets\calories.png" alt="Calories image" width="35" />
-      </h1>
-      {!showForm && <ListingRecord allRecords={allRecords} />}
+      <Title />
+      {allRecords && !showForm && (
+        <>
+          <ListingRecord allRecords={allRecords} />
+          <Footer handleToggleForm={handleToggleForm} />
+        </>
+      )}
 
-      {showForm ? (
+      {showForm && (
         <CaloriesRecordForm
           onAddRecord={addRecord}
           onCancel={handleToggleForm}
         />
-      ) : (
-        <div className={button.footer}>
-          <button className={button.button} onClick={handleToggleForm}>
-            Add Record
-          </button>
-        </div>
       )}
     </>
   );

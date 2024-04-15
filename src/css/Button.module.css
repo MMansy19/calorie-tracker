@@ -25,3 +25,9 @@
 .button:active {
   transform: translateY(2px);
 }
+button:disabled {
+  background-color: #012367aa;
+  border-width: 0;
+  color: gray;
+  pointer-events: none;
+}
