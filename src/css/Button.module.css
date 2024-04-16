@@ -18,6 +18,13 @@
   transition: all 0.3s ease;
 }
 
+/* Global CSS file */
+@media screen and (max-width: 500px) {
+  .mainButton {
+    width: 80%;
+  }
+}
+
 .button:hover {
   background-color: #0a1659;
   text-decoration: underline;

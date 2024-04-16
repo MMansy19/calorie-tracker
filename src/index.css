@@ -80,3 +80,25 @@ button:focus-visible {
   border-radius: 8px;
   z-index: 1000; /* Ensure the modal is above the overlay */
 }
+
+.top-listing-record {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  @media screen and (max-width: 768px) {
+    gap: 20px;
+    flex-direction: column;
+  }
+}
+.total-calories {
+  color: #eee;
+  font-weight: bold;
+  font-size: 20px;
+}
+.total-calories-number {
+  background-color: #333;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  padding: 8px 12px;
+}

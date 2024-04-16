@@ -18,12 +18,7 @@ function RecordList({ records }) {
           alt="No records found Icon"
           width="200"
         />
-        <p className={styles.noRecords}> No records found for this date</p>
-        {/* {user.first_name}
-        {"    "}
-        {user.last_name}
-        {"    "}
-        {user.id} */}
+        <p className={styles.noRecords}> No records found for this date</p>{" "}
       </div>
     );
   } else {

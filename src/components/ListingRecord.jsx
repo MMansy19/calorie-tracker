@@ -1,12 +1,22 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RecordList from "./RecordList";
 import ListingDate from "./ListingDate.jsx";
 import { getTodayDate } from "../utils";
 
 function ListingRecord({ allRecords }) {
-  // Set initial state to today's date
   const [selectedDate, setSelectedDate] = useState(getTodayDate());
+  const [totalCalories, setTotalCalories] = useState(0);
+
+  useEffect(() => {
+    let caloriesTotal = 0;
+    allRecords.forEach((record) => {
+      if (record.date.toISOString().split("T")[0] === selectedDate) {
+        caloriesTotal += record.calories;
+      }
+    });
+    setTotalCalories(caloriesTotal);
+  }, [allRecords, selectedDate]);
 
   const filteredRecords = allRecords.filter(
     (record) => record.date.toISOString().split("T")[0] === selectedDate
@@ -14,10 +24,16 @@ function ListingRecord({ allRecords }) {
 
   return (
     <>
-      <ListingDate
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-      />
+      <div className="top-listing-record">
+        <ListingDate
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
+        <div className="total-calories">
+          Total Calories:{" "}
+          <span className="total-calories-number">{totalCalories}</span>
+        </div>
+      </div>
       <RecordList records={filteredRecords} />
     </>
   );

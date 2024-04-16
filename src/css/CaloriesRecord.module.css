@@ -11,6 +11,7 @@
   background-color: #222; /* Adjust background color for dark mode */
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Adjust shadow for dark mode */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-bottom: 1px solid #646cffb8;
 }
 
 .record-date {
