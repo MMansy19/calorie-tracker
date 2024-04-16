@@ -3,7 +3,7 @@ import styles from "../css/Title.module.css";
 function Title() {
   return (
     <h1 className={styles["title"]}>
-      Calorie Tracker{" "}
+      Welcome to Calorie Tracker{" "}
       <img
         className={styles["responsive-image"]}
         src="src\assets\calories.png"

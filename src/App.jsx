@@ -1,88 +1,104 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // App.js
 import { useEffect, useState } from "react";
 import ListingRecord from "./components/ListingRecord";
 import Title from "./components/Title";
 import Footer from "./components/Footer.jsx";
 import CaloriesRecordForm from "./components/CaloriesRecordForm";
-import { getTodayDate } from "./utils";
+import Modal from "react-modal";
+// import AppContextProvider from "./AppContext";
 
-const INITIAL_RECORDS = [
-  {
-    id: 1,
-    date: new Date(getTodayDate()),
-    meal: "breakfast",
-    content: "Cereal with milk",
-    calories: 135,
-  },
-  {
-    id: 2,
-    date: new Date(getTodayDate()),
-    meal: "lunch",
-    content: "Sandwich",
-    calories: 250,
-  },
-  {
-    id: 3,
-    date: new Date(getTodayDate()),
-    meal: "dinner",
-    content: "Pasta",
-    calories: 500,
-  },
-];
 const LOCAL_STORAGE_KEY = "caloriesRecord";
 
 function App() {
-  // const [allRecords, setAllRecords] = useState(INITIAL_RECORDS);
-  const [allRecords, setAllRecords] = useState([]);
-  const [nextId, setNextId] = useState(4);
-  const [showForm, setShowForm] = useState(false);
+  const [records, setRecords] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const saveRecords = () => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(allRecords));
-  };
-  const loadRecords = () => {
-    const storageRecords = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (storageRecords != null && storageRecords != "undefined") {
-      setAllRecords(storageRecords);
+  function save() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(records));
+  }
+
+  function loadRecords() {
+    const storageRecords = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (storageRecords != null && storageRecords !== "undefined") {
+      setRecords(
+        JSON.parse(storageRecords).map((record) => ({
+          ...record,
+          date: new Date(record.date),
+          calories: Number(record.calories),
+        }))
+      );
     } else {
-      setAllRecords([]);
+      setRecords([]);
     }
-  };
+  }
 
   useEffect(() => {
-    if (!allRecords) {
+    if (!records) {
       loadRecords();
     } else {
-      saveRecords();
+      save();
     }
-  }, [allRecords]);
+  }, [records]);
 
-  const handleToggleForm = () => {
-    setShowForm(!showForm);
+  const modalStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      border: "none", // Remove the border
+      padding: "0px", // Remove padding
+      backgroundColor: "rgb(50, 50, 50,.1)",
+    },
+    overlay: {
+      backgroundColor: "rgba(0,0,0,0.1)",
+      blur: "2px",
+    },
   };
 
-  const addRecord = (newRecord) => {
-    newRecord.id = nextId;
-    setNextId((lastValue) => lastValue + 1);
-    setAllRecords((prevRecord) => [newRecord, ...prevRecord]);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const formSubmitHandler = (record) => {
+    const formattedRecord = {
+      ...record,
+      date: record.date,
+      id: crypto.randomUUID(),
+    };
+    setRecords((prevRecords) => [formattedRecord, ...prevRecords]);
+
+    handleCloseModal();
   };
 
   return (
     <>
       <Title />
-      {allRecords && !showForm && (
-        <>
-          <ListingRecord allRecords={allRecords} />
-          <Footer handleToggleForm={handleToggleForm} />
-        </>
-      )}
-
-      {showForm && (
+      {/* <AppContextProvider> */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={handleCloseModal}
+        contentLabel="Modal"
+        style={modalStyles}
+        className="Modal"
+        overlayClassName="Overlay"
+      >
         <CaloriesRecordForm
-          onAddRecord={addRecord}
-          onCancel={handleToggleForm}
+          onAddRecord={formSubmitHandler}
+          onCancel={handleCloseModal}
         />
-      )}
+      </Modal>
+      {records && <ListingRecord allRecords={records} />}
+      {/* </AppContextProvider> */}
+
+      <Footer handleToggleForm={handleOpenModal} />
     </>
   );
 }
