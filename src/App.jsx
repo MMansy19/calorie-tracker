@@ -17,6 +17,9 @@ function App() {
   function save() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(records));
   }
+  function removeMeal(id) {
+    setRecords((prev) => prev.filter((meal) => meal.id !== id));
+  }
 
   function loadRecords() {
     const storageRecords = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -95,7 +98,9 @@ function App() {
           onCancel={handleCloseModal}
         />
       </Modal>
-      {records && <ListingRecord allRecords={records} />}
+      {records && (
+        <ListingRecord allRecords={records} removeMeal={removeMeal} />
+      )}
       {/* </AppContextProvider> */}
 
       <Footer handleToggleForm={handleOpenModal} />

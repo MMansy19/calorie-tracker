@@ -1,15 +1,11 @@
-/* eslint-disable react/prop-types */
-// import { useState, useEffect } from "react";
+// /* eslint-disable react/prop-types */
 import CaloriesRecord from "./CaloriesRecord";
-// import { getUser } from "../utils";
 import styles from "../css/RecordList.module.css";
-function RecordList({ records }) {
-  // const [user, setUser] = useState({});
+import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
-  // useEffect(() => {
-  //   getUser(setUser);
-  // }, []);
-
+// eslint-disable-next-line react/prop-types
+function RecordList({ records, removeMeal }) {
   if (records.length === 0) {
     return (
       <div className={styles.placeholder}>
@@ -24,15 +20,30 @@ function RecordList({ records }) {
   } else {
     return (
       <>
-        {records.map((record) => (
-          <CaloriesRecord
-            key={record.id}
-            {...record}
-            date={new Date(record.date)}
-          />
-        ))}
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            ease: "easeOut",
+            opacity: { duration: 0.6 },
+            y: { duration: 0.5 },
+          }}
+        >
+          {records.map((record) => (
+            <CaloriesRecord
+              key={record.id}
+              {...record}
+              date={new Date(record.date)}
+              removeMeal={removeMeal}
+            />
+          ))}
+        </motion.div>
       </>
     );
   }
 }
 export default RecordList;
+
+RecordList.propTypes = {
+  records: PropTypes.arrayOf(PropTypes.object).isRequired,
+};

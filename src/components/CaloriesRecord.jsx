@@ -21,6 +21,14 @@ function CalorieRecord(props) {
             />
             {props.calories}
           </li>
+          <button onClick={() => props.removeMeal(props.id)}>
+            <img
+              src="src\assets\remove.png"
+              alt="Calories image"
+              width="25"
+              height="25"
+            />
+          </button>
         </ul>
       )}
     </>
