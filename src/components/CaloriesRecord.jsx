@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "../css/CaloriesRecord.module.css";
 import CalorieRecordDate from "./CalorieRecordDate";
+//  import { RxCross1 } from "react-icons/rx";
 
 function CalorieRecord(props) {
   return (
@@ -21,6 +22,7 @@ function CalorieRecord(props) {
             />
             {props.calories}
           </li>
+          {/* <RxCross1 onClick={() => props.removeMeal(props.id)} /> */}
           <button onClick={() => props.removeMeal(props.id)}>
             <img
               src="src\assets\remove.png"

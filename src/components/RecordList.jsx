@@ -2,10 +2,10 @@
 import CaloriesRecord from "./CaloriesRecord";
 import styles from "../css/RecordList.module.css";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, Reorder } from "framer-motion";
 
 // eslint-disable-next-line react/prop-types
-function RecordList({ records, removeMeal }) {
+function RecordList({ records, removeMeal, setRecords }) {
   if (records.length === 0) {
     return (
       <div className={styles.placeholder}>
@@ -29,14 +29,32 @@ function RecordList({ records, removeMeal }) {
             y: { duration: 0.5 },
           }}
         >
-          {records.map((record) => (
-            <CaloriesRecord
-              key={record.id}
-              {...record}
-              date={new Date(record.date)}
-              removeMeal={removeMeal}
-            />
-          ))}
+          <Reorder.Group
+            as="ol"
+            axis="y"
+            values={records}
+            onReorder={setRecords}
+          >
+            <AnimatePresence>
+              {records.map((record) => (
+                <Reorder.Item
+                  key={record.id}
+                  value={record}
+                  whileDrag={{
+                    scale: 0.85,
+                    boxShadow: "0px 1px 8px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <CaloriesRecord
+                    key={record.id}
+                    {...record}
+                    date={new Date(record.date)}
+                    removeMeal={removeMeal}
+                  />
+                </Reorder.Item>
+              ))}
+            </AnimatePresence>
+          </Reorder.Group>
         </motion.div>
       </>
     );

@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import styles from "../css/CaloriesRecordForm.module.css";
 import button from "../css/Button.module.css";
 import { getTodayDate } from "../utils";
+
 const DEFAULT_VALUE = {
-  date: new Date(getTodayDate()),
+  date: getTodayDate(),
   meal: "Breakfast",
   content: "",
   calories: "",

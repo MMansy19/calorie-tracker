@@ -4,7 +4,7 @@ import RecordList from "./RecordList";
 import ListingDate from "./ListingDate.jsx";
 import { getTodayDate } from "../utils";
 
-function ListingRecord({ allRecords, removeMeal }) {
+function ListingRecord({ allRecords, removeMeal, setRecords }) {
   const [selectedDate, setSelectedDate] = useState(getTodayDate());
   const [totalCalories, setTotalCalories] = useState(0);
 
@@ -34,7 +34,11 @@ function ListingRecord({ allRecords, removeMeal }) {
           <span className="total-calories-number">{totalCalories}</span>
         </div>
       </div>
-      <RecordList records={filteredRecords} removeMeal={removeMeal} />
+      <RecordList
+        records={filteredRecords}
+        removeMeal={removeMeal}
+        setRecords={setRecords}
+      />
     </>
   );
 }

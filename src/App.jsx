@@ -52,8 +52,8 @@ function App() {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      border: "none", // Remove the border
-      padding: "0px", // Remove padding
+      border: "none",
+      padding: "0px",
       backgroundColor: "rgb(50, 50, 50,.1)",
     },
     overlay: {
@@ -99,7 +99,11 @@ function App() {
         />
       </Modal>
       {records && (
-        <ListingRecord allRecords={records} removeMeal={removeMeal} />
+        <ListingRecord
+          allRecords={records}
+          removeMeal={removeMeal}
+          setRecords={setRecords}
+        />
       )}
       {/* </AppContextProvider> */}
 
