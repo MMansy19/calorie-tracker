@@ -10,17 +10,16 @@
   align-items: center;
   background-color: #222;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
   margin: 5px 0;
-  min-height: 4rem;
-  max-height: 5rem;
+  height: 5rem;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
 }
 
 .record:hover {
-  transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-  margin: auto;
-  animation: pulseRecord 2.5s infinite;
+  width: 98%;
+  opacity: 0.7;
 }
 
 .record-date {
@@ -102,19 +101,5 @@
   }
   100% {
     transform: scale(1);
-  }
-}
-@keyframes pulseRecord {
-  0% {
-    transform: scale(1);
-    width: 100%;
-  }
-  50% {
-    transform: scale(1.02);
-    width: 95%;
-  }
-  100% {
-    transform: scale(1);
-    width: 100%;
   }
 }
