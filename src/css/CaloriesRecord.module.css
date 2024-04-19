@@ -6,14 +6,19 @@
   display: flex;
   justify-content: space-between;
   padding: 0 15px;
-  height: auto;
   align-items: center;
   background-color: #222;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   margin: 5px 0;
-  height: 5rem;
   transition: all 0.3s ease-in-out;
   width: 100%;
+  ::-webkit-scrollbar {
+    width: 0.1rem;
+    height: 0.1rem;
+  }
+  @media screen and (max-width: 768px) {
+    height: 3rem;
+  }
 }
 
 .record:hover {
@@ -39,24 +44,25 @@
 .record-content {
   color: #fff;
   font-style: italic;
-
+  padding: 10px 0;
   text-align: center;
-  max-height: 10vb;
+  max-height: 8vb;
   width: 20vb;
   overflow-x: auto;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
   @media screen and (max-width: 768px) {
+    max-height: 5vb;
     width: 10vb;
     font-size: 12px;
   }
 }
 .record-calories {
-  background-color: #333;
-  border: 2px solid #fff;
-  border-radius: 6px;
-  padding: 8px 12px;
   text-align: center;
   @media screen and (min-width: 768px) {
+    background-color: #333;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    padding: 8px 12px;
     min-width: 100px;
   }
 }

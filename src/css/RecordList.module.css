@@ -2,7 +2,7 @@
   max-height: 50vb;
   overflow-y: auto; /* Enable vertical scrolling */
   @media screen and (max-width: 768px) {
-    max-height: 60vb;
+    max-height: 55vb;
   }
 }
 .noRecordsIcon {
@@ -42,8 +42,10 @@
   }
 }
 .GiMeal {
-  width: 10vb;
-  margin-left: 10px;
+  margin-left: 50px;
+}
+.calorieIcon {
+  margin-left: 30px;
 }
 
 .recordTitle:hover {

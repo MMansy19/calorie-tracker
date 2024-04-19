@@ -1,62 +1,50 @@
 import { Footer } from "flowbite-react";
 import {
-  BsDribbble,
-  BsFacebook,
   BsGithub,
-  BsInstagram,
-  BsTwitter,
+  BsLinkedin,
+  BsEnvelope,
+  BsWhatsapp,
+  BsTelegram,
 } from "react-icons/bs";
+import { FiAtSign } from "react-icons/fi";
+
+import styles from "../css/Footer.module.css"; // Import CSS module
 
 function FooterComponent() {
   return (
-    <Footer container>
-      <div className="w-full">
-        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-          <div>
-            <Footer.Brand
-              href="https://flowbite.com"
-              src="https://flowbite.com/docs/images/logo.svg"
-              alt="Flowbite Logo"
-              name="Flowbite"
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-            <div>
-              <Footer.Title title="about" />
-              <Footer.LinkGroup col>
-                <Footer.Link href="#">Flowbite</Footer.Link>
-                <Footer.Link href="#">Tailwind CSS</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title title="Follow us" />
-              <Footer.LinkGroup col>
-                <Footer.Link href="#">Github</Footer.Link>
-                <Footer.Link href="#">Discord</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title title="Legal" />
-              <Footer.LinkGroup col>
-                <Footer.Link href="#">Privacy Policy</Footer.Link>
-                <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-          </div>
-        </div>
-        <Footer.Divider />
-        <div className="w-full sm:flex sm:items-center sm:justify-between">
-          <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} />
-            <Footer.Icon href="#" icon={BsInstagram} />
-            <Footer.Icon href="#" icon={BsTwitter} />
-            <Footer.Icon href="#" icon={BsGithub} />
-            <Footer.Icon href="#" icon={BsDribbble} />
-          </div>
+    <Footer className={styles.footer}>
+      <div className={styles.content}>
+        <Footer.Copyright
+          href="https://mahmoud-mansy-portfolio.netlify.app/"
+          by={
+            <span>
+              <FiAtSign className={styles.atSymbol} />
+              Mahmoud Mansy
+            </span>
+          }
+          year={2024}
+        />
+        <div className={styles.icons}>
+          <Footer.Icon
+            href="https://www.linkedin.com/in/mahmoud-mansy-a189a5232/"
+            icon={BsLinkedin}
+          />
+          <Footer.Icon href="https://github.com/MMansy19/" icon={BsGithub} />
+          <Footer.Icon
+            href="mailto:mahmoud2abdalfattah@gmail.com"
+            icon={BsEnvelope}
+          />
+          <Footer.Icon href="https://t.me/mah_moud_2003" icon={BsTelegram} />
+          <Footer.Icon
+            href="https://api.whatsapp.com/send/?phone=201010352387&text&type=phone_number&app_absent=0"
+            icon={BsWhatsapp}
+          />
         </div>
       </div>
     </Footer>
   );
 }
+
 export default FooterComponent;
+
+/* Footer.module.css */
