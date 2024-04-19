@@ -40,7 +40,6 @@ body {
   min-height: 80vh;
   min-width: 320px;
   background-color: #1a1a1a;
-
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.87);
 }
@@ -87,7 +86,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
 .Overlay {
   position: fixed;
   top: 0;

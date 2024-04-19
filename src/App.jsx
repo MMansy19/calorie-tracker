@@ -86,7 +86,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="mainContainer">
       <Title />
       <AppContext.Provider
         value={{
@@ -120,7 +120,7 @@ function App() {
 
       <Button handleToggleForm={handleOpenModal} />
       <FooterComponent />
-    </>
+    </div>
   );
 }
 
