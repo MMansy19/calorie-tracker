@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import ListingRecord from "./components/ListingRecord";
 import Title from "./components/Title";
-import Footer from "./components/Footer.jsx";
+import Button from "./components/Button";
+import FooterComponent from "./components/Footer";
 import CaloriesRecordForm from "./components/CaloriesRecordForm";
 import Modal from "react-modal";
 import { AppContext } from "./app-context";
@@ -117,7 +118,8 @@ function App() {
         )}
       </AppContext.Provider>
 
-      <Footer handleToggleForm={handleOpenModal} />
+      <Button handleToggleForm={handleOpenModal} />
+      <FooterComponent />
     </>
   );
 }
