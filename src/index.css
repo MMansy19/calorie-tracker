@@ -90,7 +90,8 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 90vh;
+  max-height: 100vh;
 }
 .Overlay {
   position: fixed;
