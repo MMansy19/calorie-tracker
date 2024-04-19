@@ -5,7 +5,10 @@
     max-height: 60vb;
   }
 }
-
+.noRecordsIcon {
+  font-size: 150px;
+  color: #666;
+}
 .noRecords {
   color: #666;
   font-style: italic;
@@ -40,6 +43,7 @@
 }
 .GiMeal {
   width: 10vb;
+  margin-left: 10px;
 }
 
 .recordTitle:hover {

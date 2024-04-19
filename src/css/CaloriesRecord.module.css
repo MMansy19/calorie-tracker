@@ -19,7 +19,10 @@
 .record:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  margin: auto;
+  animation: pulseRecord 2.5s infinite;
 }
+
 .record-date {
   font-weight: bold;
   @media screen and (max-width: 768px) {
@@ -60,6 +63,7 @@
 }
 
 .record-date:hover,
+.record-meal:hover,
 .record-content:hover,
 .record-calories:hover {
   opacity: 0.7;
@@ -85,6 +89,7 @@
 
 .RxCross1:hover {
   opacity: 0.7;
+  color: red;
   animation: pulse 1s infinite;
 }
 
@@ -97,5 +102,19 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes pulseRecord {
+  0% {
+    transform: scale(1);
+    width: 100%;
+  }
+  50% {
+    transform: scale(1.02);
+    width: 95%;
+  }
+  100% {
+    transform: scale(1);
+    width: 100%;
   }
 }

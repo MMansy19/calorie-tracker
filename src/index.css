@@ -38,9 +38,9 @@ body {
   font-family: "Josefin Sans", sans-serif;
   display: flex;
   place-items: center;
-  min-width: 320px;
   margin: 2rem 0;
   min-height: 80vh;
+  min-width: 320px;
   background-color: #121212;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.87);
@@ -117,6 +117,7 @@ button:focus-visible {
   margin: 0 10px;
   align-items: center;
   margin-bottom: 20px;
+  gap: 200px;
   @media screen and (max-width: 768px) {
     gap: 20px;
   }

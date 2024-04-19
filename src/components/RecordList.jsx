@@ -7,17 +7,15 @@ import { CiCalendarDate } from "react-icons/ci";
 import { GiMeal } from "react-icons/gi";
 import { FaQuestion } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
+import { TfiSearch } from "react-icons/tfi";
 
 // eslint-disable-next-line react/prop-types
 function RecordList({ records, removeMeal, setRecords }) {
   if (records.length === 0) {
     return (
       <div className={styles.placeholder}>
-        <img
-          src="src\assets\not-found.svg"
-          alt="No records found Icon"
-          width="200"
-        />
+        <TfiSearch className={styles.noRecordsIcon} />
+        <img />
         <p className={styles.noRecords}> No records found for this date</p>{" "}
       </div>
     );
@@ -40,8 +38,8 @@ function RecordList({ records, removeMeal, setRecords }) {
             onReorder={setRecords}
           >
             <ul className={styles.recordTitle}>
-              <li>
-                <CiCalendarDate className={styles.CiCalendarDate} />
+              <li className={styles.CiCalendarDate}>
+                <CiCalendarDate />
               </li>
               <li>
                 <FaQuestion />
