@@ -1,12 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import RecordList from "./RecordList";
 import ListingDate from "./ListingDate.jsx";
-import { getTodayDate } from "../utils";
+import { AppContext } from "../app-context";
 
 function ListingRecord({ allRecords, removeMeal, setRecords }) {
-  const [selectedDate, setSelectedDate] = useState(getTodayDate());
-  const [totalCalories, setTotalCalories] = useState(0);
+  const {
+    currentDate: selectedDate,
+    totalCalories,
+    setTotalCalories,
+  } = useContext(AppContext);
 
   useEffect(() => {
     let caloriesTotal = 0;
@@ -25,10 +29,7 @@ function ListingRecord({ allRecords, removeMeal, setRecords }) {
   return (
     <>
       <div className="top-listing-record">
-        <ListingDate
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-        />
+        <ListingDate />
         <div className="total-calories">
           <span className="total-calories-title">Total Calories:</span>
           <span className="total-calories-number">{totalCalories}</span>

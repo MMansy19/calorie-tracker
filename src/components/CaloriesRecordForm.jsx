@@ -1,21 +1,20 @@
 /* eslint-disable react/prop-types */
 // CaloriesRecordForm.js
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "../css/CaloriesRecordForm.module.css";
 import button from "../css/Button.module.css";
-import { getTodayDate } from "../utils";
-
-const DEFAULT_VALUE = {
-  date: getTodayDate(),
-  meal: "Breakfast",
-  content: "",
-  calories: "",
-};
+import { AppContext } from "../app-context";
 
 function CaloriesRecordForm(props) {
+  const { totalCalories, currentDate, setCurrentDate } = useContext(AppContext);
   const [isFormValid, setIsFormValid] = useState(false);
+  const DEFAULT_VALUE = {
+    date: currentDate,
+    meal: "Breakfast",
+    content: "",
+    calories: "",
+  };
   const [mealRecord, setMealRecord] = useState(DEFAULT_VALUE);
-
   useEffect(() => {
     const validateForm = () => {
       return mealRecord.content && mealRecord.calories;
@@ -41,13 +40,20 @@ function CaloriesRecordForm(props) {
 
   return (
     <form className={styles.form} onSubmit={handleAddRecord}>
+      <p className={styles.warning}>
+        You have spent <span className={styles.bolded}> {totalCalories}</span>{" "}
+        calories
+      </p>
       <label htmlFor="date">Date:</label>
       <input
         type="date"
         id="date"
         required
         value={mealRecord.date}
-        onChange={(e) => setMealRecord({ ...mealRecord, date: e.target.value })}
+        onChange={(e) => {
+          setMealRecord({ ...mealRecord, date: e.target.value });
+          setCurrentDate(e.target.value);
+        }}
       />
 
       <label htmlFor="meal">Meal:</label>

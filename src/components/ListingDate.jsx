@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
 import styles from "../css/ListingSection.module.css";
+import { useContext } from "react";
+import { AppContext } from "../app-context";
 
-function ListingDate({ selectedDate, setSelectedDate }) {
+function ListingDate() {
+  const { currentDate: selectedDate, setCurrentDate: setSelectedDate } =
+    useContext(AppContext);
   return (
     <div className={styles["listing-picker"]}>
       <label htmlFor="date" className={styles["listing-picker-label"]}>

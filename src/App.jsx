@@ -6,13 +6,16 @@ import Title from "./components/Title";
 import Footer from "./components/Footer.jsx";
 import CaloriesRecordForm from "./components/CaloriesRecordForm";
 import Modal from "react-modal";
-// import AppContextProvider from "./AppContext";
+import { AppContext } from "./app-context";
+import { getTodayDate } from "./utils.js";
 
 const LOCAL_STORAGE_KEY = "caloriesRecord";
 
 function App() {
   const [records, setRecords] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentDate, setCurrentDate] = useState(getTodayDate);
+  const [totalCalories, setTotalCalories] = useState(0);
 
   function save() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(records));
@@ -84,28 +87,35 @@ function App() {
   return (
     <>
       <Title />
-      {/* <AppContextProvider> */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={handleCloseModal}
-        contentLabel="Modal"
-        style={modalStyles}
-        className="Modal"
-        overlayClassName="Overlay"
+      <AppContext.Provider
+        value={{
+          currentDate,
+          setCurrentDate,
+          totalCalories,
+          setTotalCalories,
+        }}
       >
-        <CaloriesRecordForm
-          onAddRecord={formSubmitHandler}
-          onCancel={handleCloseModal}
-        />
-      </Modal>
-      {records && (
-        <ListingRecord
-          allRecords={records}
-          removeMeal={removeMeal}
-          setRecords={setRecords}
-        />
-      )}
-      {/* </AppContextProvider> */}
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={handleCloseModal}
+          contentLabel="Modal"
+          style={modalStyles}
+          className="Modal"
+          overlayClassName="Overlay"
+        >
+          <CaloriesRecordForm
+            onAddRecord={formSubmitHandler}
+            onCancel={handleCloseModal}
+          />
+        </Modal>
+        {records && (
+          <ListingRecord
+            allRecords={records}
+            removeMeal={removeMeal}
+            setRecords={setRecords}
+          />
+        )}
+      </AppContext.Provider>
 
       <Footer handleToggleForm={handleOpenModal} />
     </>

@@ -98,3 +98,29 @@
     transform: translateY(0);
   }
 }
+
+.error {
+  border: 1px solid maroon;
+  color: maroon;
+}
+
+.warning {
+  background: #ffcc00;
+  border-radius: 10px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #444;
+}
+.footer,
+.warning {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  font-style: italic;
+}
+.bolded {
+  font-weight: bold;
+  color: #333;
+}
