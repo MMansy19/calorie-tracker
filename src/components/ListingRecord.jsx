@@ -30,7 +30,7 @@ function ListingRecord({ allRecords, removeMeal, setRecords }) {
           setSelectedDate={setSelectedDate}
         />
         <div className="total-calories">
-          Total Calories:{" "}
+          <span className="total-calories-title">Total Calories:</span>
           <span className="total-calories-number">{totalCalories}</span>
         </div>
       </div>

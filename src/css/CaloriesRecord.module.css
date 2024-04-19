@@ -1,50 +1,101 @@
 .record {
   border-radius: 8px;
   list-style: none;
-  color: #eee; /* Adjust text color for dark mode */
+  color: #eee;
   font-size: 16px;
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 0 15px;
   height: auto;
   align-items: center;
-  background-color: #222; /* Adjust background color for dark mode */
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Adjust shadow for dark mode */
+  background-color: #222;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  border-bottom: 1px solid #646cffb8;
-}
-
-.record-date {
-  font-weight: bold;
-}
-
-.record-content {
-  color: #fff;
-  font-style: italic;
-  text-transform: capitalize;
-}
-.record-calories {
-  @media screen and (min-width: 768px) {
-    background-color: #333;
-    border: 2px solid #fff;
-    border-radius: 6px;
-    padding: 8px 12px;
-  }
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.record-calories img {
-  width: 20px;
-  height: 20px;
+  margin: 5px 0;
+  min-height: 4rem;
+  max-height: 5rem;
 }
 
 .record:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Adjust shadow for dark mode */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+.record-date {
+  font-weight: bold;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
-.record:hover .record-calories {
-  border-color: #eee; /* Adjust border color for calories section on hover in dark mode */
+.record-meal {
+  color: #fff;
+  font-style: italic;
+  text-transform: capitalize;
+  text-align: center;
+  width: 10vb;
+}
+.record-content {
+  color: #fff;
+  font-style: italic;
+
+  text-align: center;
+  max-height: 10vb;
+  width: 20vb;
+  overflow-x: auto;
+  overflow-y: auto; /* Enable vertical scrolling */
+  @media screen and (max-width: 768px) {
+    width: 10vb;
+    font-size: 12px;
+  }
+}
+.record-calories {
+  background-color: #333;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    min-width: 100px;
+  }
+}
+
+.record-date:hover,
+.record-content:hover,
+.record-calories:hover {
+  opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+  .record-meal,
+  .record-calories {
+    font-size: 14px;
+  }
+}
+.record:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.RxCross1 {
+  transition-property: opacity;
+  transition-timing-function: ease-in;
+  transition-duration: 200ms;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.RxCross1:hover {
+  opacity: 0.7;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

@@ -1,5 +1,9 @@
 .title {
-  font-size: 3em; /* default size */
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .responsive-image {
@@ -10,7 +14,7 @@
 /* For devices with width less than 600px */
 @media only screen and (max-width: 600px) {
   .title {
-    font-size: 1.5em; /* smaller font size */
+    font-size: 1.3em; /* smaller font size */
   }
 
   .responsive-image {

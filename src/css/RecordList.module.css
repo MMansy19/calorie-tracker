@@ -1,3 +1,11 @@
+.group {
+  max-height: 50vb;
+  overflow-y: auto; /* Enable vertical scrolling */
+  @media screen and (max-width: 768px) {
+    max-height: 60vb;
+  }
+}
+
 .noRecords {
   color: #666;
   font-style: italic;
@@ -8,4 +16,32 @@
   text-align: center;
   margin: 20px 0;
   font-size: 20px;
+}
+.recordTitle {
+  border-radius: 8px;
+  list-style: none;
+  color: #eee;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 15px 5px 40px;
+  margin-bottom: 5px;
+  height: auto;
+  align-items: center;
+  background-color: #222;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-bottom: 2px solid #646cffb8;
+}
+.CiCalendarDate {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+.GiMeal {
+  width: 10vb;
+}
+
+.recordTitle:hover {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
