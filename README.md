@@ -1,4 +1,4 @@
-# Calorie Tracker
+# Calorie Tracker 🔥
 
 Calorie Tracker is a responsive web application built using React and Vite, providing users with an intuitive way to track their daily meals and calorie intake. With a focus on delivering the best user experience, Calorie Tracker leverages libraries like React Modal and Framer Motion to enhance interactivity and animation.
 
@@ -12,6 +12,21 @@ Calorie Tracker is a responsive web application built using React and Vite, prov
 - **Meal Management**: Users can add meals to their daily records using a drag-and-drop form powered by React Modal and manage their calorie intake efficiently.
 - **Dynamic Calendar**: The built-in calendar feature allows users to navigate to different days, view their meal records, and manage their calorie intake effortlessly.
 - **Persistent Storage**: All data is securely stored locally in the browser's storage, ensuring that users can access their meal records even after closing the browser.
+
+## Screenshots
+
+### Disktop
+  <img  src="ScreenShots/calorieTracker.png" alt="Home">
+<div style="display: flex; justify-content: center; flex-direction:row; gap:30px">
+  <img style="width: 500px;  margin: 0 20px;" src="ScreenShots/AddMeal.png" alt="header">
+  <img style="width: 500px;  margin: 0 20px;" src="ScreenShots/ReorderMeals.png" alt="pages">
+</div>
+
+### Mobile
+<div style="display: flex; justify-content: center; flex-direction:row ;gap:30px">
+  <img style="width: 500px;  margin: 0 20px;" src="ScreenShots/Mobile-1.png" alt="header">
+  <img style="width: 500px;  margin: 0 20px;" src="ScreenShots/Mobile-2.png" alt="pages">
+</div>
 
 ## Getting Started
 
