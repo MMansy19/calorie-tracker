@@ -1,21 +1,26 @@
 /* eslint-disable react/prop-types */
 // CaloriesRecordForm.js
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import styles from "../css/CaloriesRecordForm.module.css";
 import button from "../css/Button.module.css";
 import { AppContext } from "../app-context";
+import FormInput from "./common/FormInput";
 
 function CaloriesRecordForm(props) {
   const { totalCalories, currentDate, setCurrentDate } = useContext(AppContext);
   const [isFormValid, setIsFormValid] = useState(false);
+  const contentRef = useRef();
   const DEFAULT_VALUE = {
     date: currentDate,
     meal: "Breakfast",
     content: "",
-    calories: "",
+    calories: "0",
   };
   const [mealRecord, setMealRecord] = useState(DEFAULT_VALUE);
   useEffect(() => {
+    if (!mealRecord.content) {
+      contentRef.current.focus();
+    }
     const validateForm = () => {
       return mealRecord.content && mealRecord.calories;
     };
@@ -68,23 +73,20 @@ function CaloriesRecordForm(props) {
         <option value="Dinner">Dinner</option>
         <option value="Snack">Snack</option>
       </select>
-
-      <label htmlFor="content">Content:</label>
-      <input
-        type="text"
-        id="content"
-        required
+      <FormInput
+        text={"Content:"}
+        type={"text"}
+        id={"content"}
         value={mealRecord.content}
         onChange={(e) =>
           setMealRecord({ ...mealRecord, content: e.target.value })
         }
+        ref={contentRef}
       />
-
-      <label htmlFor="calories">Calories:</label>
-      <input
-        type="number"
-        id="calories"
-        min={0}
+      <FormInput
+        text={"Calories:"}
+        type={"number"}
+        id={"calories"}
         value={mealRecord.calories}
         onChange={(e) =>
           setMealRecord({ ...mealRecord, calories: e.target.value })
@@ -92,11 +94,15 @@ function CaloriesRecordForm(props) {
       />
 
       <div className={button.footer}>
-        <button disabled={!isFormValid} className={button.button} type="submit">
+        <button
+          disabled={!isFormValid}
+          className={button["submit-button"]}
+          type="submit"
+        >
           Add Record
         </button>
         <button
-          className={button.button}
+          className={button["cancel-button"]}
           type="button"
           onClick={props.onCancel}
         >

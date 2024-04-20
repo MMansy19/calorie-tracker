@@ -5,39 +5,62 @@
   margin-top: 10px;
   gap: 10px;
 }
-.button {
-  background-color: #012367;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 12px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease-in-out;
-  transition: all 0.3s ease;
-}
+
 .mainButton {
   margin-bottom: 10px;
 }
 
-/* Global CSS file */
+button:disabled {
+  background-color: #4caf4f64;
+  border-width: 0;
+  color: gray;
+  pointer-events: none;
+}
+
+.submit-button {
+  background-color: #4caf4fc8;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease;
+}
+.cancel-button {
+  background-color: inherit;
+  border: 1px solid gray;
+  color: gray;
+  padding: 15px 32px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  border: 1px solid white;
+  color: white;
+  text-decoration: underline;
+}
+.submit-button:hover {
+  background-color: rgb(71, 215, 78);
+}
+
+.cancel-button:active,
+.submit-button:active {
+  transform: scale(0.98);
+  transform: translateY(0.2rem);
+}
 @media screen and (max-width: 500px) {
   .mainButton {
     width: 80%;
   }
-}
-
-.button:hover {
-  background-color: #0a1659;
-  text-decoration: underline;
-}
-.button:active {
-  transform: translateY(2px);
-}
-button:disabled {
-  background-color: #012367aa;
-  border-width: 0;
-  color: gray;
-  pointer-events: none;
 }

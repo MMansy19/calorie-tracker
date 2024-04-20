@@ -4,7 +4,7 @@ function Button({ handleToggleForm }) {
   return (
     <div className={button.footer}>
       <button
-        className={`${button.button} ${button.mainButton}`}
+        className={`${button["submit-button"]} ${button.mainButton}`}
         onClick={handleToggleForm}
       >
         Add a meal
