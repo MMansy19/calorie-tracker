@@ -5,13 +5,6 @@ Calorie Tracker is a responsive web application built using React and Vite, prov
 
 ## [🌟Live Website🌟](https://calorie-tracker-sigma.vercel.app/)
 
-## Features
-
-- **Responsive Design**: Calorie Tracker is built with a mobile-first approach using React and Vite, ensuring seamless functionality across all devices, including smartphones, tablets, and desktops.
-- **Intuitive Interface**: The user interface is designed to be intuitive and user-friendly, allowing users to easily navigate through the app, add, delete, and reorder meals with ease.
-- **Meal Management**: Users can add meals to their daily records using a drag-and-drop form powered by React Modal and manage their calorie intake efficiently.
-- **Dynamic Calendar**: The built-in calendar feature allows users to navigate to different days, view their meal records, and manage their calorie intake effortlessly.
-- **Persistent Storage**: All data is securely stored locally in the browser's storage, ensuring that users can access their meal records even after closing the browser.
 
 ## Screenshots
 
@@ -28,8 +21,15 @@ Calorie Tracker is a responsive web application built using React and Vite, prov
   <img style="width: 500px;  margin: 0 10px;" src="ScreenShots/Mobile-2.png" alt="pages">
 </div>
 
-## Getting Started
 
+## Features
+- **Responsive Design**: Calorie Tracker is built with a mobile-first approach using React and Vite, ensuring seamless functionality across all devices, including smartphones, tablets, and desktops.
+- **Intuitive Interface**: The user interface is designed to be intuitive and user-friendly, allowing users to easily navigate through the app, add, delete, and reorder meals with ease.
+- **Meal Management**: Users can add meals to their daily records using a drag-and-drop form powered by React Modal and manage their calorie intake efficiently.
+- **Dynamic Calendar**: The built-in calendar feature allows users to navigate to different days, view their meal records, and manage their calorie intake effortlessly.
+- **Persistent Storage**: All data is securely stored locally in the browser's storage, ensuring that users can access their meal records even after closing the browser.
+
+## Getting Started
 1. Clone the repository:
 
 ```bash
